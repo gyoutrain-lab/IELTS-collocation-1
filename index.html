@@ -3,106 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Band 9 Grammar & Collocation Drill</title>
+    <title>Band 9 Subjunctive & Collocation Master (50 Drills)</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: #f0f4f8;
+            color: #1e293b;
             padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
         .container {
             background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 650px;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            max-width: 750px;
             width: 100%;
         }
-        h2 { color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        h2 { color: #1e3a8a; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-top: 0; }
+        .progress { color: #64748b; font-size: 0.9rem; font-weight: 600; margin-bottom: 10px; text-align: right; }
+        .instruction { font-weight: 700; margin-bottom: 8px; color: #475569; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
         .prompt-box {
-            background-color: #eff6ff;
-            border-left: 5px solid #3b82f6;
-            padding: 15px;
-            margin: 20px 0;
-            font-style: italic;
+            background-color: #f8fafc;
+            border-left: 5px solid #64748b;
+            padding: 18px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.5;
         }
-        .instruction { font-weight: bold; margin-bottom: 10px; color: #475569; }
+        .b6-highlight { color: #dc2626; font-weight: bold; background-color: #fef2f2; padding: 2px 4px; border-radius: 4px; }
+        .b9-highlight { color: #16a34a; font-weight: bold; background-color: #f0fdf4; padding: 2px 4px; border-radius: 4px; }
         .option-btn {
             display: block;
             width: 100%;
             text-align: left;
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 5px;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 1rem;
             transition: all 0.2s ease;
+            line-height: 1.4;
         }
-        .option-btn:hover { background: #e2e8f0; }
-        .correct { background-color: #d1fae5 !important; border-color: #10b981 !important; color: #065f46; font-weight: bold; }
-        .incorrect { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b; }
-        .feedback { margin-top: 15px; font-weight: bold; display: none; padding: 10px; border-radius: 5px; }
-        .nav-btns { display: flex; justify-content: space-between; margin-top: 20px; }
-        button.nav { background: #1e3a8a; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        .option-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
+        .correct { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #14532d; font-weight: 600; }
+        .incorrect { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #7f1d1d; }
+        .feedback { margin-top: 20px; font-weight: 500; display: none; padding: 15px; border-radius: 8px; line-height: 1.5; }
+        .nav-btns { display: flex; justify-content: space-between; margin-top: 25px; gap: 15px; }
+        button.nav { background: #1e3a8a; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: 600; cursor: pointer; flex: 1; transition: background 0.2s; }
         button.nav:hover { background: #172554; }
+        button.verify { background: #0284c7; }
+        button.verify:hover { background: #0369a1; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>IELTS Band 9 Syntax & Collocation Drill</h2>
-    <p>Transform the simple conditional prompt into an advanced, inverted subjunctive sentence using formal academic collocations.</p>
+    <div class="progress" id="progress-text">Question 1 of 50</div>
+    <h2>IELTS Band 9 Advanced Subjunctive Drill</h2>
+    <p style="color: #64748b; margin-bottom: 20px;">Identify the proper syntax inversion containing advanced academic collocations (<span class="b6-highlight">Band 6</span> shifts to <span class="b9-highlight">Band 9</span>).</p>
     
-    <div class="instruction">Base Prompt (Band 6 Level):</div>
-    <div class="prompt-box" id="base-prompt">Loading prompt...</div>
+    <div class="instruction">Base Prompt (General Register):</div>
+    <div class="prompt-box" id="base-prompt">Loading...</div>
 
-    <div class="instruction">Select the Band 9 Transformation:</div>
+    <div class="instruction">Select the Band 9 Academic Alternative:</div>
     <div id="options-container"></div>
 
     <div class="feedback" id="feedback-box"></div>
 
     <div class="nav-btns">
-        <button class="nav" onclick="checkAnswer()">Verify Choice</button>
+        <button class="nav verify" onclick="checkAnswer()">Verify Choice</button>
         <button class="nav" onclick="nextQuestion()">Next Scenario &rarr;</button>
     </div>
 </div>
 
 <script>
+    // Comprehensive Database of 50 structured IELTS items
     const drillData = [
-        {
-            base: "If the hospital has enough budget, the crisis will end.",
-            options: [
-                "Were the hospital adequate fiscal resources, the crisis alleviate systemic agency.",
-                "Were the hospital to possess adequate fiscal resources, pressures across the systemic agency would be alleviated.",
-                "If the hospital were to have enough budget, the system agency crisis would end up."
-            ],
-            correct: 1,
-            rationale: "Correct. Uses 'Were + Subject + to + Verb' perfectly, couples it with 'possess adequate fiscal resources', and accurately treats 'alleviate' as a passive transformation ('pressures... would be alleviated')."
-        },
-        {
-            base: "If the city controls the growing population, it will stop the bad traffic crisis.",
-            options: [
-                "Were municipal authorities to curb the exponential growth of the population, the critical transit crisis would be precipitated.",
-                "Were municipal authorities to curb the exponential growth of the population, the severe transit crisis would be effectively averted.",
-                "Had the city controlled the growing population, traffic would end."
-            ],
-            correct: 1,
-            rationale: "Correct. 'Curb the exponential growth' replaces 'controls the growing', and 'transit crisis... averted' correctly elevates the second clause."
-        },
-        {
-            base: "If the school gives enough money to science, it will have a big effect on students.",
-            options: [
-                "Were academic institutions to allocate adequate financial capital to scientific research, it would exert a profound influence on student development.",
-                "Were schools giving enough money to science, a big effect would be had on students.",
-                "If the school allocated financial capital, students exert a profound influence."
-            ],
-            correct: 0,
-            rationale: "Correct. 'Allocate adequate financial capital' seamlessly replaces 'gives enough money', while 'exert a profound influence' is the precise academic collocation for 'have a big effect'."
-        }
+        // Governance & Fiscal Policy (1-10)
+        { base: "If the government <span class='b6-highlight'>gives money to</span> schools, the problem <span class='b6-highlight'>will stop</span>.", b9: "Were the government to <span class='b9-highlight'>allocate financial capital</span> to educational institutions, systemic academic challenges would be <span class='b9-highlight'>effectively mitigated</span>.", wrong: "Were the government giving money to schools, problem would stop." },
+        { base: "If the state <span class='b6-highlight'>has enough budget</span>, the crisis <span class='b6-highlight'>will end</span>.", b9: "Were the state to <span class='b9-highlight'>possess adequate fiscal resources</span>, pressures across the institutional framework would be <span class='b9-highlight'>promptly alleviated</span>.", wrong: "Were the state adequate fiscal resources, the crisis alleviate the systemic agency." },
+        { base: "If the council <span class='b6-highlight'>spends less money</span>, it <span class='b6-highlight'>will save</span> the city.", b9: "Were the council to <span class='b9-highlight'>exercise fiscal austerity</span>, municipal solvency would be <span class='b9-highlight'>successfully preserved</span>.", wrong: "Were the council to spend less money, it saves the city environment." },
+        { base: "If leaders <span class='b6-highlight'>change the law</span>, crime <span class='b6-highlight'>will drop</span>.", b9: "Were lawmakers to <span class='b9-highlight'>amend the legislative framework</span>, criminal activities would experience a <span class='b9-highlight'>precipitous decline</span>.", wrong: "Were leaders changing the law system, crime drop down quickly." },
+        { base: "If authorities <span class='b6-highlight'>stop bad behavior</span>, safety <span class='b6-highlight'>will grow</span>.", b9: "Were authorities to <span class='b9-highlight'>curb illicit practices</span>, public safety protocols would be <span class='b9-highlight'>substantially enhanced</span>.", wrong: "Were authorities to stop bad behavior, safety would grow up." },
+        { base: "If the nation <span class='b6-highlight'>taxes big companies</span>, the economy <span class='b6-highlight'>will get better</span>.", b9: "Were the nation to <span class='b9-highlight'>impose fiscal tariffs on conglomerates</span>, macroeconomic indicators would be <span class='b9-highlight'>markedly optimized</span>.", wrong: "Were the nation taxing big companies, the economy gets better." },
+        { base: "If politicians <span class='b6-highlight'>talk about poverty</span>, the issue <span class='b6-highlight'>will go away</span>.", b9: "Were policymakers to <span class='b9-highlight'>address socioeconomic disparities</span>, systemic marginalization would be <span class='b9-highlight'>gradually eradicated</span>.", wrong: "Were politicians to talk about poverty, the issue goes away." },
+        { base: "If the system <span class='b6-highlight'>helps poor people</span>, wealth inequality <span class='b6-highlight'>will shrink</span>.", b9: "Were the infrastructure to <span class='b9-highlight'>provide welfare subsidies to marginalized demographics</span>, the wealth disparity index would be <span class='b9-highlight'>substantially narrowed</span>.", wrong: "Were the system helping poor people, wealth inequality shrinks down." },
+        { base: "If departments <span class='b6-highlight'>work together</span>, corruption <span class='b6-highlight'>will disappear</span>.", b9: "Were administrative bodies to <span class='b9-highlight'>foster inter-agency collaboration</span>, institutional corruption would be <span class='b9-highlight'>comprehensively dismantled</span>.", wrong: "Were departments working together, corruption disappears." },
+        { base: "If regulations <span class='b6-highlight'>forbid monopoly</span>, small businesses <span class='b6-highlight'>will do well</span>.", b9: "Were regulatory codes to <span class='b9-highlight'>prohibit monopolistic structures</span>, independent commercial enterprises would <span class='b9-highlight'>flourish exponentially</span>.", wrong: "Were regulations to forbid monopoly, small business does well." },
+
+        // Healthcare & Public Health (11-20)
+        { base: "If hospitals <span class='b6-highlight'>buy more tools</span>, treatment <span class='b6-highlight'>will get better</span>.", b9: "Were healthcare facilities to <span class='b9-highlight'>acquire advanced biomedical apparatus</span>, clinical interventions would be <span class='b9-highlight'>profoundly optimized</span>.", wrong: "Were hospitals to buy more tools, treatment gets better." },
+        { base: "If the ministry <span class='b6-highlight'>hires more nurses</span>, patient care <span class='b6-highlight'>will improve</span>.", b9: "Were the ministry to <span class='b9-highlight'>expand nursing personnel capacity</span>, patient care optimization would be <span class='b9-highlight'>consistently realized</span>.", wrong: "Were the ministry hiring more nurses, patient care improves." },
+        { base: "If clinics <span class='b6-highlight'>stop infections</span>, mortality rates <span class='b6-highlight'>will drop</span>.", b9: "Were clinical institutions to <span class='b9-highlight'>intercept nosocomial transmission paths</span>, mortality rates would experience a <span class='b9-highlight'>drastic reduction</span>.", wrong: "Were clinics to stop infections, mortality rates drop down." },
+        { base: "If individuals <span class='b6-highlight'>eat healthy food</span>, chronic illness <span class='b6-highlight'>will stop</span>.", b9: "Were individuals to <span class='b9-highlight'>consume nutrient-dense diets</span>, the incidence of chronic pathology would be <span class='b9-highlight'>effectively curtailed</span>.", wrong: "Were individuals eating healthy food, chronic illness stops." },
+        { base: "If research centers <span class='b6-highlight'>find new medicine</span>, diseases <span class='b6-highlight'>will disappear</span>.", b9: "Were research institutions to <span class='b9-highlight'>engineer novel pharmacological therapies</span>, virulent pathogens would be <span class='b9-highlight'>entirely eradicated</span>.", wrong: "Were research centers to find new medicine, diseases disappear." },
+        { base: "If insurers <span class='b6-highlight'>lower premium costs</span>, health access <span class='b6-highlight'>will open up</span>.", b9: "Were insurance syndicates to <span class='b9-highlight'>subsidize premium structures</span>, universal healthcare accessibility would be <span class='b9-highlight'>seamlessly facilitated</span>.", wrong: "Were insurers lowering costs, health access opens up." },
+        { base: "If campaigns <span class='b6-highlight'>tell people about health</span>, bad habits <span class='b6-highlight'>will decrease</span>.", b9: "Were public campaigns to <span class='b9-highlight'>disseminate preventative health literacy</span>, deleterious lifestyles would be <span class='b9-highlight'>significantly minimized</span>.", wrong: "Were campaigns to tell people health, bad habits decrease." },
+        { base: "If states <span class='b6-highlight'>fund mental health</span>, workplace stress <span class='b6-highlight'>will go down</span>.", b9: "Were states to <span class='b9-highlight'>subsidize psychological welfare programs</span>, occupational burnout would be <span class='b9-highlight'>drastically mitigated</span>.", wrong: "Were states funding mental health, workplace stress goes down." },
+        { base: "If lockdowns <span class='b6-highlight'>keep people inside</span>, virus spreads <span class='b6-highlight'>will end</span>.", b9: "Were containment protocols to <span class='b9-highlight'>mandate domestic quarantine</span>, viral transmission vectors would be <span class='b9-highlight'>completely neutralized</span>.", wrong: "Were lockdowns to keep people inside, virus spreads end." },
+        { base: "If rural areas <span class='b6-highlight'>get more doctors</span>, regional health <span class='b6-highlight'>will improve</span>.", b9: "Were remote sectors to <span class='b9-highlight'>receive an influx of medical practitioners</span>, regional epidemiological profiles would <span class='b9-highlight'>markedly advance</span>.", wrong: "Were rural areas getting doctors, regional health improves." },
+
+        // Technology & Automation (21-30)
+        { base: "If automation <span class='b6-highlight'>takes over factory jobs</span>, unemployment <span class='b6-highlight'>will rise</span>.", b9: "Were automation to <span class='b9-highlight'>supplant manual manufacturing roles</span>, structural unemployment would <span class='b9-highlight'>inevitably escalate</span>.", wrong: "Were automation taking over factory jobs, unemployment rises." },
+        { base: "If algorithms <span class='b6-highlight'>check private data</span>, privacy <span class='b6-highlight'>will die</span>.", b9: "Were algorithmic systems to <span class='b9-highlight'>scrutinize proprietary information</span>, individual privacy rights would be <span class='b9-highlight'>irrevocably compromised</span>.", wrong: "Were algorithms to check private data, privacy dies." },
+        { base: "If companies <span class='b6-highlight'>use artificial intelligence</span>, output <span class='b6-highlight'>will double</span>.", b9: "Were enterprises to <span class='b9-highlight'>integrate artificial intelligence paradigms</span>, operational throughput would be <span class='b9-highlight'>exponentially augmented</span>.", wrong: "Were companies using AI, output doubles up." },
+        { base: "If developers <span class='b6-highlight'>make software secure</span>, cyberattacks <span class='b6-highlight'>will stop</span>.", b9: "Were developers to <span class='b9-highlight'>fortify cryptographic protocols</span>, malicious cyber intrusions would be <span class='b9-highlight'>effectively neutralized</span>.", wrong: "Were developers to make software secure, cyberattacks stop." },
+        { base: "If social media <span class='b6-highlight'>shows fake news</span>, public trust <span class='b6-highlight'>will break</span>.", b9: "Were digital platforms to <span class='b9-highlight'>propagate simulated misinformation</span>, civic cohesion would be <span class='b9-highlight'>profoundly eroded</span>.", wrong: "Were social media showing fake news, public trust breaks." },
+        { base: "If networks <span class='b6-highlight'>get faster speed</span>, remote work <span class='b6-highlight'>will grow</span>.", b9: "Were networks to <span class='b9-highlight'>provision hyper-velocity bandwidth</span>, telecommuting modalities would <span class='b9-highlight'>proliferate globally</span>.", wrong: "Were networks to get faster speed, remote work grows." },
+        { base: "If schools <span class='b6-highlight'>use VR headsets</span>, learning <span class='b6-highlight'>will be fun</span>.", b9: "Were academic institutions to <span class='b9-highlight'>adopt immersive virtual environments</span>, pedagogical engagement would be <span class='b9-highlight'>maximally optimized</span>.", wrong: "Were schools using VR headsets, learning is fun." },
+        { base: "If sensors <span class='b6-highlight'>track energy waste</span>, consumption <span class='b6-highlight'>will fall</span>.", b9: "Were sensory matrices to <span class='b9-highlight'>monitor thermodynamic inefficiencies</span>, aggregate energy expenditures would <span class='b9-highlight'>declined precipitously</span>.", wrong: "Were sensors to track energy waste, consumption falls." },
+        { base: "If algorithms <span class='b6-highlight'>trade stocks fast</span>, market volatility <span class='b6-highlight'>will happen</span>.", b9: "Were automated scripts to <span class='b9-highlight'>execute high-frequency financial transactions</span>, macroeconomic instability would be <span class='b9-highlight'>acutely precipitated</span>.", wrong: "Were algorithms trading stocks fast, volatility happens." },
+        { base: "If tech firms <span class='b6-highlight'>share open source code</span>, innovation <span class='b6-highlight'>will speed up</span>.", b9: "Were technology consortia to <span class='b9-highlight'>disseminate open-source architectures</span>, global technological innovation would be <span class='b9-highlight'>significantly accelerated</span>.", wrong: "Were tech firms to share open code, innovation speeds." },
+
+        // Education & Human Capital (31-40)
+        { base: "If universities <span class='b6-highlight'>cut tuition fees</span>, more students <span class='b6-highlight'>will join</span>.", b9: "Were universities to <span class='b9-highlight'>subsidize matriculation expenditures</span>, higher education enrollment metrics would <span class='b9-highlight'>substantially escalate</span>.", wrong: "Were universities cutting fees, more students join." },
+        { base: "If teachers <span class='b6-highlight'>get bigger salaries</span>, education quality <span class='b6-highlight'>will go up</span>.", b9: "Were educators to <span class='b9-highlight'>receive upgraded remuneration packages</span>, pedagogical standards would be <span class='b9-highlight'>profoundly elevated</span>.", wrong: "Were teachers to get bigger salaries, quality goes up." },
+        { base: "If courses <span class='b6-highlight'>teach job skills</span>, graduate employment <span class='b6-highlight'>will rise</span>.", b9: "Were curricula to <span class='b9-highlight'>incorporate vocational competencies</span>, post-graduate employment indices would <span class='b9-highlight'>experience exponential growth</span>.", wrong: "Were courses teaching job skills, employment rises." },
+        { base: "If exams <span class='b6-highlight'>are too hard</span>, student anxiety <span class='b6-highlight'>will increase</span>.", b9: "Were evaluative frameworks to <span class='b9-highlight'>impose excessive cognitive demands</span>, psychological distress among candidates would be <span class='b9-highlight'>acutely exacerbated</span>.", wrong: "Were exams too hard, student anxiety increases." },
+        { base: "If schools <span class='b6-highlight'>have creative classes</span>, children <span class='b6-highlight'>will think better</span>.", b9: "Were institutions to <span class='b9-highlight'>integrate lateral-thinking modules</span>, divergent cognitive capabilities would be <span class='b9-highlight'>robustly cultivated</span>.", wrong: "Were schools having creative classes, children think better." },
+        { base: "If countries <span class='b6-highlight'>send scholars abroad</span>, knowledge transfer <span class='b6-highlight'>will happen</span>.", b9: "Were sovereign states to <span class='b9-highlight'>sponsor international academic fellowships</span>, transnational cross-pollination of knowledge would be <span class='b9-highlight'>effectively facilitated</span>.", wrong: "Were countries to send scholars abroad, knowledge happens." },
+        { base: "If classrooms <span class='b6-highlight'>get digital boards</span>, basic methods <span class='b6-highlight'>will change</span>.", b9: "Were learning environments to <span class='b9-highlight'>adopt interactive digital interfaces</span>, traditional pedagogical paradigms would be <span class='b9-highlight'>completely revolutionized</span>.", wrong: "Were classrooms getting digital boards, methods change." },
+        { base: "If training centers <span class='b6-highlight'>repeat drills 21 times</span>, instinct <span class='b6-highlight'>will form</span>.", b9: "Were educational centers to <span class='b9-highlight'>mandate twenty-one iterative task repetitions</span>, professional cognitive instincts would be <span class='b9-highlight'>permanently crystallized</span>.", wrong: "Were centers repeating drills 21 times, instinct forms." },
+        { base: "If literacy programs <span class='b6-highlight'>get state help</span>, adult reading <span class='b6-highlight'>will improve</span>.", b9: "Were literacy initiatives to <span class='b9-highlight'>receive statutory endowments</span>, adult functional literacy metrics would <span class='b9-highlight'>advance significantly</span>.", wrong: "Were literacy programs getting help, adult reading improves." },
+        { base: "If assignments <span class='b6-highlight'>focus on research</span>, critical thought <span class='b6-highlight'>will grow</span>.", b9: "Were task parameters to <span class='b9-highlight'>prioritize empirical investigation</span>, analytical reasoning attributes would be <span class='b9-highlight'>profoundly nurtured</span>.", wrong: "Were assignments to focus on research, critical thought grows." },
+
+        // Ecology & Urbanization (41-50)
+        { base: "If factories <span class='b6-highlight'>stop dumping waste</span>, rivers <span class='b6-highlight'>will become clean</span>.", b9: "Were industrial complexes to <span class='b9-highlight'>prohibit effluent discharge</span>, aquatic ecosystems would be <span class='b9-highlight'>successfully rejuvenated</span>.", wrong: "Were factories stopping waste dump, rivers become clean." },
+        { base: "If cities <span class='b6-highlight'>make green parks</span>, urban heat <span class='b6-highlight'>will drop</span>.", b9: "Were municipal planners to <span class='b9-highlight'>incorporate expansive arboreal reserves</span>, microclimate thermal intensities would be <span class='b9-highlight'>noticeably mitigated</span>.", wrong: "Were cities to make green parks, urban heat drops." },
+        { base: "If governments <span class='b6-highlight'>ban plastic bags</span>, ocean trash <span class='b6-highlight'>will decrease</span>.", b9: "Were legislative bodies to <span class='b9-highlight'>prohibit non-biodegradable polymers</span>, marine synthetic detritus would be <span class='b9-highlight'>substantially curtailed</span>.", wrong: "Were governments banning plastic bags, ocean trash decreases." },
+        { base: "If companies <span class='b6-highlight'>use solar energy</span>, carbon footprints <span class='b6-highlight'>will shrink</span>.", b9: "Were corporate entities to <span class='b9-highlight'>transition to photovoltaic matrices</span>, aggregate greenhouse emissions would be <span class='b9-highlight'>profoundly diminished</span>.", wrong: "Were companies to use solar energy, footprints shrink." },
+        { base: "If states <span class='b6-highlight'>protect endangered animals</span>, biodiversity <span class='b6-highlight'>will stay safe</span>.", b9: "Were administrative regimes to <span class='b9-highlight'>enforce wildlife conservation mandates</span>, ecological diversity records would be <span class='b9-highlight'>securely preserved</span>.", wrong: "Were states protecting animals, biodiversity stays safe." },
+        { base: "If urban areas <span class='b6-highlight'>build train networks</span>, car usage <span class='b6-highlight'>will drop</span>.", b9: "Were metropolitan administrative sectors to <span class='b9-highlight'>construct rapid transit networks</span>, private vehicular reliance would be <span class='b9-highlight'>drastically minimized</span>.", wrong: "Were urban areas to build train networks, car use drops." },
+        { base: "If farms <span class='b6-highlight'>stop using chemicals</span>, soil health <span class='b6-highlight'>will return</span>.", b9: "Were agricultural operations to <span class='b9-highlight'>renounce synthetic chemical treatments</span>, soil microbiomes would be <span class='b9-highlight'>completely revitalized</span>.", wrong: "Were farms stopping chemical use, soil health returns." },
+        { base: "If forest logging <span class='b6-highlight'>is controlled</span>, deforestation <span class='b6-highlight'>will slow down</span>.", b9: "Were silvicultural exploitation to be <span class='b9-highlight'>strictly regulated</span>, woodland denudation processes would be <span class='b9-highlight'>effectively decelerated</span>.", wrong: "Were forest logging controlled, deforestation slows." },
+        { base: "If nations <span class='b6-highlight'>prepare for disasters</span>, property damage <span class='b6-highlight'>will drop</span>.", b9: "Were sovereigns to <span class='b9-highlight'>implement comprehensive catastrophe mitigation frameworks</span>, infrastructural damage indices would be <span class='b9-highlight'>markedly depreciated</span>.", wrong: "Were nations to prepare for disasters, damage drops." },
+        { base: "If carbon emission laws <span class='b6-highlight'>get strict</span>, global warming <span class='b6-highlight'>will slow</span>.", b9: "Were statutory emission thresholds to be <span class='b9-highlight'>rigorously enforced</span>, climatic degradation vectors would be <span class='b9-highlight'>perceptibly counteracted</span>.", wrong: "Were emission laws getting strict, global warming slows down." }
     ];
 
     let currentQuestion = 0;
@@ -111,44 +151,57 @@
     function loadQuestion() {
         selectedOption = null;
         document.getElementById('feedback-box').style.display = 'none';
-        const q = drillData[currentQuestion];
-        document.getElementById('base-prompt').innerText = `"${q.base}"`;
+        document.getElementById('progress-text').innerText = `Question ${currentQuestion + 1} of ${drillData.length}`;
         
+        const q = drillData[currentQuestion];
+        document.getElementById('base-prompt').innerHTML = `"${q.base}"`;
+        
+        // Randomly shuffle the location of the correct option to maximize drill efficacy
+        const choices = [
+            { text: q.b9, isCorrect: true, rationale: "Excellent. Accurate use of inverted second conditional syntax blended with formal, advanced collocations." },
+            { text: q.wrong, isCorrect: false, rationale: "Incorrect structure. This features structural flaws, incorrect tense coordination, or broken collocations." }
+        ];
+        if (Math.random() > 0.5) choices.reverse();
+
         const container = document.getElementById('options-container');
         container.innerHTML = '';
         
-        q.options.forEach((opt, idx) => {
+        choices.forEach((choice) => {
             const btn = document.createElement('button');
             btn.className = 'option-btn';
-            btn.innerText = opt;
-            btn.onclick = () => selectOpt(idx, btn);
+            btn.innerHTML = choice.text;
+            btn.onclick = () => selectOpt(choice, btn);
             container.appendChild(btn);
         });
     }
 
-    function selectOpt(idx, element) {
-        selectedOption = idx;
+    function selectOpt(choice, element) {
+        selectedOption = choice;
         const btns = document.querySelectorAll('.option-btn');
-        btns.forEach(b => b.style.borderColor = '#cbd5e1');
-        element.style.borderColor = '#3b82f6';
+        btns.forEach(b => b.style.borderColor = '#e2e8f0');
+        element.style.borderColor = '#0284c7';
     }
 
     function checkAnswer() {
-        if (selectedOption === null) return alert("Please select an option first!");
-        const q = drillData[currentQuestion];
-        const btns = document.querySelectorAll('.option-btn');
+        if (!selectedOption) return alert("Please select an upgrade option first!");
         const feedback = document.getElementById('feedback-box');
+        const btns = document.querySelectorAll('.option-btn');
         
         feedback.style.display = 'block';
-        if (selectedOption === q.correct) {
-            btns[selectedOption].classList.add('correct');
+        
+        btns.forEach(btn => {
+            // Find and highlight correct answer visually
+            if (btn.innerHTML.includes("b9-highlight")) {
+                btn.classList.add('correct');
+            }
+        });
+
+        if (selectedOption.isCorrect) {
             feedback.className = 'feedback correct';
-            feedback.innerText = q.rationale;
+            feedback.innerText = selectedOption.rationale;
         } else {
-            btns[selectedOption].classList.add('incorrect');
-            btns[q.correct].classList.add('correct');
             feedback.className = 'feedback incorrect';
-            feedback.innerText = "Incorrect. Look closely at the verb restrictions or collocations used. " + q.rationale;
+            feedback.innerText = selectedOption.rationale;
         }
     }
 
